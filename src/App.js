@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
 import Hero from './components/Hero/Hero';
 import About from './components/About/About';
@@ -9,7 +9,49 @@ import AllProjects from './components/AllProjects/AllProjects';
 import Experience from './components/Experience/Experience';
 import Contact from './components/Contact/Contact';
 import Footer from './components/Footer/Footer';
+import useDocumentTitle from './hooks/useDocumentTitle';
 import './App.css';
+
+// Scroll Handler Component
+const ScrollToSection = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const sectionId = location.hash.replace('#', '');
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [location]);
+
+  return null;
+};
+
+// Home Page Component
+const HomePage = () => {
+  useDocumentTitle(null);
+  
+  return (
+    <>
+      <Navbar />
+      <main>
+        <Hero />
+        <About />
+        <Skills />
+        <Projects />
+        <Experience />
+        <Contact />
+      </main>
+      <Footer />
+    </>
+  );
+};
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -38,21 +80,9 @@ function App() {
       <div className="app">
         <div className="background-gradient"></div>
         <div className="grid-background"></div>
+        <ScrollToSection />
         <Routes>
-          <Route path="/" element={
-            <>
-              <Navbar />
-              <main>
-                <Hero />
-                <About />
-                <Skills />
-                <Projects />
-                <Experience />
-                <Contact />
-              </main>
-              <Footer />
-            </>
-          } />
+          <Route path="/" element={<HomePage />} />
           <Route path="/projects" element={<AllProjects />} />
         </Routes>
       </div>
