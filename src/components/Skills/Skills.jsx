@@ -50,29 +50,29 @@ const Skills = () => {
     { name: 'Java', icon: <FaJava />, color: '#ED8B00', category: 'languages' },
     { name: 'SQL', icon: <FaDatabase />, color: '#336791', category: 'languages' },
     
-    // Frameworks
-    { name: 'Django', icon: <SiDjango />, color: '#092E20', category: 'frameworks' },
+    // Frameworks - FIXED COLORS
+    { name: 'Django', icon: <SiDjango />, color: '#44B78B', category: 'frameworks' }, // Changed from #092E20
     { name: 'Flask', icon: <SiFlask />, color: '#ffffff', category: 'frameworks' },
     { name: 'React.js', icon: <FaReact />, color: '#61DAFB', category: 'frameworks' },
-    { name: 'Celery', icon: <SiCelery />, color: '#37814A', category: 'frameworks' },
+    { name: 'Celery', icon: <SiCelery />, color: '#9DCE5A', category: 'frameworks' }, // Brighter green
     { name: 'REST APIs', icon: <TbApi />, color: '#06b6d4', category: 'frameworks' },
     
-    // Data & Analytics
-    { name: 'Pandas', icon: <SiPandas />, color: '#150458', category: 'data' },
-    { name: 'NumPy', icon: <SiNumpy />, color: '#013243', category: 'data' },
-    { name: 'Seaborn', icon: <BsGraphUp />, color: '#3776AB', category: 'data' },
+    // Data & Analytics - FIXED COLORS
+    { name: 'Pandas', icon: <SiPandas />, color: '#E70488', category: 'data' }, // Changed from #150458 to pink (official alternate)
+    { name: 'NumPy', icon: <SiNumpy />, color: '#4DABCF', category: 'data' }, // Changed from #013243 to light blue (official alternate)
+    { name: 'Seaborn', icon: <BsGraphUp />, color: '#76B7B2', category: 'data' }, // Softer teal
     { name: 'Data Pipelines', icon: <MdOutlineAutoGraph />, color: '#06b6d4', category: 'data' },
     { name: 'Data Analysis', icon: <BsGraphUp />, color: '#14b8a6', category: 'data' },
     
     // Databases
-    { name: 'PostgreSQL', icon: <SiPostgresql />, color: '#336791', category: 'databases' },
+    { name: 'PostgreSQL', icon: <SiPostgresql />, color: '#699ECA', category: 'databases' }, // Lighter blue
     { name: 'MongoDB', icon: <SiMongodb />, color: '#47A248', category: 'databases' },
-    { name: 'MySQL', icon: <SiMysql />, color: '#4479A1', category: 'databases' },
+    { name: 'MySQL', icon: <SiMysql />, color: '#00758F', category: 'databases' },
     
     // Web Scraping
     { name: 'Scrapy', icon: <FaPython />, color: '#60A839', category: 'scraping' },
     { name: 'Selenium', icon: <SiSelenium />, color: '#43B02A', category: 'scraping' },
-    { name: 'BeautifulSoup', icon: <SiGooglechrome />, color: '#3776AB', category: 'scraping' },
+    { name: 'BeautifulSoup', icon: <SiGooglechrome />, color: '#FFD43B', category: 'scraping' }, // Yellow for visibility
     
     // Tools & Automation
     { name: 'n8n', icon: <TbAutomation />, color: '#EA4B71', category: 'tools' },
@@ -111,7 +111,6 @@ const Skills = () => {
               className={`filter-btn ${activeCategory === category.id ? 'active' : ''}`}
               onClick={() => setActiveCategory(category.id)}
             >
-              <span className="filter-icon">{category.icon}</span>
               <span className="filter-name">{category.name}</span>
             </button>
           ))}

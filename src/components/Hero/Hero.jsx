@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { TypeAnimation } from 'react-type-animation';
-import { FaGithub, FaLinkedin, FaInstagram, FaArrowDown } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaInstagram, FaArrowDown, FaPython, FaCode, FaChartPie, FaTable } from 'react-icons/fa';
 import { HiMail } from 'react-icons/hi';
 import { Link } from 'react-scroll';
 import './Hero.css';
@@ -110,10 +110,10 @@ const Hero = () => {
               <div className="hero-image-ring ring-2"></div>
             </div>
             <div className="floating-elements">
-              <div className="floating-element el-1">🐍</div>
-              <div className="floating-element el-2">📊</div>
-              <div className="floating-element el-3">⚙️</div>
-              <div className="floating-element el-4">🚀</div>
+              <div className="floating-element el-1"><FaPython /></div>
+              <div className="floating-element el-2"><FaChartPie /></div>
+              <div className="floating-element el-3"><FaCode /></div>
+              <div className="floating-element el-4"><FaTable /></div>
             </div>
           </div>
         </div>

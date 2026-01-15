@@ -9,7 +9,6 @@ import AllProjects from './components/AllProjects/AllProjects';
 import Experience from './components/Experience/Experience';
 import Contact from './components/Contact/Contact';
 import Footer from './components/Footer/Footer';
-import useDocumentTitle from './hooks/useDocumentTitle';
 import './App.css';
 
 // Scroll Handler Component
@@ -35,7 +34,6 @@ const ScrollToSection = () => {
 
 // Home Page Component
 const HomePage = () => {
-  useDocumentTitle(null);
   
   return (
     <>

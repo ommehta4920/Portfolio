@@ -165,7 +165,6 @@ const Navbar = () => {
                 rel="noopener noreferrer"
                 onClick={closeMobileMenu}
               >
-                <FaDownload />
                 <span>Resume</span>
               </a>
             </li>
