@@ -10,13 +10,18 @@ const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
+  // Navbar background on scroll
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = isMobileMenuOpen ? 'hidden' : 'auto';
+    return () => (document.body.style.overflow = 'auto');
+  }, [isMobileMenuOpen]);
 
   const navLinks = [
     { name: 'Home', to: 'hero' },
@@ -27,73 +32,69 @@ const Navbar = () => {
     { name: 'Contact', to: 'contact' },
   ];
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
-
   const handleNavClick = (to) => {
+    setIsMobileMenuOpen(false);
     if (location.pathname !== '/') {
       navigate('/');
       setTimeout(() => {
-        const element = document.getElementById(to);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
+        document.getElementById(to)?.scrollIntoView({ behavior: 'smooth' });
       }, 100);
     }
-    setIsMobileMenuOpen(false);
   };
 
-  // Resume URL - Change this to your actual resume link
-  const resumeUrl = '/resume.pdf'; // Local file in public folder
-  // OR use Google Drive:
-  // const resumeUrl = 'https://drive.google.com/file/d/YOUR_FILE_ID/view?usp=sharing';
+  const resumeUrl = '/resume.pdf';
 
   return (
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className="navbar-container">
-        <ScrollLink 
-          to="hero" 
-          smooth={true} 
-          duration={500} 
+
+        {/* LOGO */}
+        <ScrollLink
+          to="hero"
+          smooth
+          duration={500}
           className="navbar-logo"
-          onClick={() => location.pathname !== '/' && navigate('/')}
+          onClick={() => {
+            setIsMobileMenuOpen(false);
+            if (location.pathname !== '/') navigate('/');
+          }}
         >
           <span className="logo-text">OM</span>
           <span className="logo-dot">.</span>
         </ScrollLink>
 
+        {/* NAV LINKS */}
         <ul className={`nav-links ${isMobileMenuOpen ? 'active' : ''}`}>
           {navLinks.map((link, index) => (
-            <li key={index} style={{ animationDelay: `${index * 0.1}s` }}>
+            <li key={index}>
               {location.pathname === '/' ? (
                 <ScrollLink
                   to={link.to}
-                  smooth={true}
+                  smooth
                   duration={500}
                   offset={-70}
-                  spy={true}
+                  spy
                   activeClass="active"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {link.name}
                 </ScrollLink>
               ) : (
-                <span 
-                  onClick={() => handleNavClick(link.to)}
+                <span
                   className="nav-link-span"
+                  onClick={() => handleNavClick(link.to)}
                 >
                   {link.name}
                 </span>
               )}
             </li>
           ))}
-          
-          {/* Mobile Resume Button */}
+
+          {/* MOBILE RESUME */}
           <li className="mobile-resume-link">
-            <a 
+            <a
               href={resumeUrl}
-              target="_blank" 
+              target="_blank"
               rel="noopener noreferrer"
               onClick={() => setIsMobileMenuOpen(false)}
             >
@@ -103,18 +104,22 @@ const Navbar = () => {
           </li>
         </ul>
 
-        {/* Desktop Resume Button */}
-        <a 
+        {/* DESKTOP RESUME */}
+        <a
           href={resumeUrl}
-          className="resume-btn" 
-          target="_blank" 
+          className="resume-btn"
+          target="_blank"
           rel="noopener noreferrer"
         >
           <FaDownload className="resume-icon" />
           <span>Resume</span>
         </a>
 
-        <div className="mobile-menu-btn" onClick={toggleMobileMenu}>
+        {/* MOBILE MENU BUTTON */}
+        <div
+          className="mobile-menu-btn"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        >
           {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
         </div>
       </div>
