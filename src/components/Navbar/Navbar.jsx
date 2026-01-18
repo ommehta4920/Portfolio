@@ -160,7 +160,7 @@ const Navbar = () => {
             {/* Mobile Resume Button */}
             <li className="mobile-resume-link">
               <a
-                href="/resume.pdf"
+                href={`${process.env.PUBLIC_URL}/resume.pdf`}
                 download="Om_Mehta_Resume.pdf"
                 onClick={closeMobileMenu}
               >
@@ -171,7 +171,7 @@ const Navbar = () => {
 
           {/* Desktop Resume Button */}
           <a
-            href="/resume.pdf"
+            href={`${process.env.PUBLIC_URL}/resume.pdf`}
             className="resume-btn"
             download="Om_Mehta_Resume.pdf"
           >
