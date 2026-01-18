@@ -159,27 +159,25 @@ const Navbar = () => {
             
             {/* Mobile Resume Button */}
             <li className="mobile-resume-link">
-              <a 
-                href={resumeUrl}
-                target="_blank" 
-                rel="noopener noreferrer"
-                onClick={closeMobileMenu}
-              >
-                <span>Resume</span>
-              </a>
-            </li>
+  <a
+    href="/resume.pdf"
+    download="Om_Mehta_Resume.pdf"
+    onClick={closeMobileMenu}
+  >
+    <span>Resume</span>
+  </a>
+</li>
           </ul>
 
           {/* Desktop Resume Button */}
-          <a 
-            href={resumeUrl}
-            className="resume-btn" 
-            target="_blank" 
-            rel="noopener noreferrer"
-          >
-            <FaDownload className="resume-icon" />
-            <span>Resume</span>
-          </a>
+          <a
+  href="/resume.pdf"
+  className="resume-btn"
+  download="Om_Mehta_Resume.pdf"
+>
+  <FaDownload className="resume-icon" />
+  <span>Resume</span>
+</a>
 
           {/* Mobile Menu Button */}
           <button 
