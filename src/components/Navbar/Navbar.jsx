@@ -88,7 +88,7 @@ const Navbar = () => {
 
   const handleNavClick = useCallback((to) => {
     closeMobileMenu();
-    
+
     if (location.pathname !== '/') {
       navigate('/');
       // Wait for navigation then scroll
@@ -116,10 +116,10 @@ const Navbar = () => {
       <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
         <div className="navbar-container">
           {/* Logo */}
-          <ScrollLink 
-            to="hero" 
-            smooth={true} 
-            duration={500} 
+          <ScrollLink
+            to="hero"
+            smooth={true}
+            duration={500}
             className="navbar-logo"
             onClick={handleLogoClick}
           >
@@ -144,7 +144,7 @@ const Navbar = () => {
                     {link.name}
                   </ScrollLink>
                 ) : (
-                  <span 
+                  <span
                     onClick={() => handleNavClick(link.to)}
                     className="nav-link-span"
                     role="button"
@@ -156,32 +156,32 @@ const Navbar = () => {
                 )}
               </li>
             ))}
-            
+
             {/* Mobile Resume Button */}
             <li className="mobile-resume-link">
-  <a
-    href="/resume.pdf"
-    download="Om_Mehta_Resume.pdf"
-    onClick={closeMobileMenu}
-  >
-    <span>Resume</span>
-  </a>
-</li>
+              <a
+                href="/resume.pdf"
+                download="Om_Mehta_Resume.pdf"
+                onClick={closeMobileMenu}
+              >
+                <span>Resume</span>
+              </a>
+            </li>
           </ul>
 
           {/* Desktop Resume Button */}
           <a
-  href="/resume.pdf"
-  className="resume-btn"
-  download="Om_Mehta_Resume.pdf"
->
-  <FaDownload className="resume-icon" />
-  <span>Resume</span>
-</a>
+            href="/resume.pdf"
+            className="resume-btn"
+            download="Om_Mehta_Resume.pdf"
+          >
+            <FaDownload className="resume-icon" />
+            <span>Resume</span>
+          </a>
 
           {/* Mobile Menu Button */}
-          <button 
-            className="mobile-menu-btn" 
+          <button
+            className="mobile-menu-btn"
             onClick={toggleMobileMenu}
             aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={isMobileMenuOpen}
@@ -192,7 +192,7 @@ const Navbar = () => {
       </nav>
 
       {/* Mobile Overlay - Click to close */}
-      <div 
+      <div
         className={`mobile-overlay ${isMobileMenuOpen ? 'active' : ''}`}
         onClick={closeMobileMenu}
         aria-hidden="true"
